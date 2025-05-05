@@ -1,0 +1,149 @@
+:root {
+  --bg: #111;
+  --container-bg: rgba(30, 30, 30, 0.98);
+  --text: #fff;
+  --input-bg: #222;
+  --input-focus-bg: #181818;
+  --input-border: #333;
+  --button-bg: #fff;
+  --button-text: #111;
+  --button-hover-bg: #eaeaea;
+  --button-hover-text: #000;
+  --link: #fff;
+  --link-hover: #eaeaea;
+  --link-hover-bg: #222;
+  --msg: #ff5252;
+  --shadow: 0 8px 32px rgba(0,0,0,0.25);
+  --input-radius: 12px;
+  --container-radius: 24px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f7f7;
+    --container-bg: #fff;
+    --text: #111;
+    --input-bg: #f0f0f0;
+    --input-focus-bg: #eaeaea;
+    --input-border: #ccc;
+    --button-bg: #111;
+    --button-text: #fff;
+    --button-hover-bg: #222;
+    --button-hover-text: #fff;
+    --link: #111;
+    --link-hover: #eaeaea;
+    --link-hover-bg: #eaeaea;
+    --msg: #d32f2f;
+    --shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  background: var(--container-bg);
+  border-radius: var(--container-radius);
+  box-shadow: var(--shadow);
+  padding: 40px 32px 32px 32px;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.8s cubic-bezier(.4,0,.2,1);
+  transition: background 0.3s, color 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+h2 {
+  margin: 0 0 24px 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 2rem;
+}
+
+form {
+  width: 100%;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 1rem;
+  transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+  outline: none;
+  box-shadow: 0 0 0 0 transparent;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input:focus {
+  background: var(--input-focus-bg);
+  box-shadow: 0 0 0 2px var(--link-hover-bg);
+  border-color: var(--link-hover-bg);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: var(--input-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+button:hover, button:focus {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-text);
+}
+
+#loginMsg {
+  color: var(--msg);
+  margin-bottom: 10px;
+  min-height: 18px;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+p {
+  margin: 0;
+  font-size: 0.97rem;
+  color: #bbb;
+  transition: color 0.3s;
+}
+
+a {
+  color: var(--link);
+  padding: 2px 4px;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: var(--link-hover);
+}

@@ -1,0 +1,142 @@
+/* Estilos para o pop-up de novo post */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-container {
+  width: 450px;
+  background: var(--container-bg);
+  color: var(--text);
+  padding: 30px 20px;
+  border-radius: var(--input-radius);
+  box-shadow: var(--shadow);
+  transform: translateY(20px);
+  transition: transform 0.3s, background 0.3s, color 0.3s;
+  position: relative;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.popup-overlay.active .popup-container {
+  transform: translateY(0);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popup-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-popup {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.popup-content textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1.5px solid var(--border);
+  border-radius: var(--input-radius);
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: background 0.2s, border 0.2s;
+}
+.popup-content textarea:focus {
+  background: var(--input-focus-bg);
+  border-color: var(--button-hover-bg);
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.popup-actions button {
+  padding: 12px 18px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: var(--input-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.popup-actions button:hover {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-text);
+}
+
+/* Quando estamos em modo escuro (como o feed) */
+body.dark-theme .popup-container {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+body.dark-theme .popup-header h2 {
+  color: #fff;
+}
+
+body.dark-theme .close-popup {
+  color: #aaa;
+}
+
+body.dark-theme .popup-content textarea {
+  background: #222;
+  color: #fff;
+  border-color: #333;
+}
+
+body.dark-theme .popup-actions button {
+  background: #fff;
+  color: #111;
+}
+
+body.dark-theme .popup-actions button:hover {
+  background: #eaeaea;
+}
+
+/* Estilos responsivos */
+@media (max-width: 500px) {
+  .popup-container {
+    width: 90%;
+    padding: 20px 15px;
+  }
+}

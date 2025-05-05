@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvy - Feed</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico">
+    <link rel="stylesheet" href="/public/css/feed.css">
+    <link rel="stylesheet" href="/public/css/popup.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Barra lateral esquerda -->
+        <nav class="sidebar-left">
+            <div class="sidebar-icon"><img src="/public/images/favicon.ico" alt="nuvy"></div>
+            <div class="sidebar-icon">🔍</div>
+            <div class="sidebar-icon">👤</div>
+            <div class="sidebar-icon" id="logoutBtn">🚪</div>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+            <!-- Cabeçalho fixo -->
+            <header class="header">
+                <h2>Feed</h2>
+            </header>
+
+            <!-- Área de composição de post -->
+            <div class="post-composer">
+                <div class="profile-pic"></div>
+                <div class="post-input-container">
+                    <textarea id="conteudo" class="post-input" placeholder="Quais são as novidades?"
+                        maxlength="280"></textarea>
+                    <button id="postBtn" class="post-button">Postar</button>
+                </div>
+            </div>
+
+            <!-- Feed com rolagem -->
+            <div class="feed-container">
+                <div id="feed">
+                    <!-- Posts serão carregados aqui -->
+                    <article class="post">
+                        <div class="post-header">
+                            <div class="profile-pic"></div>
+                            <div class="post-user-info">
+                                <div class="post-username">ayfondo</div>
+                                <div class="post-meta">
+                                    <span>playstation</span>
+                                    <span class="post-time">16 min</span>
+                                </div>
+                            </div>
+                            <div>⋯</div>
+                        </div>
+                        <div class="post-content">
+                            <p>Now (with version: 25.03-11.20.00 update) you can change the appearance and sound of your
+                                Playstation 5 to older consoles.</p>
+                            <p>You can select between PlayStation 1, 2, 3, 4 and default.</p>
+                            <p>Sadly it doesn't do the console launch. <span style="color:#888">Traduzir</span></p>
+                        </div>
+                        <div class="post-image">
+                            <img src="/api/placeholder/600/400" alt="PlayStation interface" style="width:100%;">
+                        </div>
+                        <div class="post-actions">
+                            <div class="post-action">❤️ <span class="action-count">3</span></div>
+                            <div class="post-action">💬</div>
+                            <div class="post-action">🔄</div>
+                            <div class="post-action">📤 <span class="action-count">3</span></div>
+                        </div>
+                    </article>
+
+                    <article class="post">
+                        <div class="post-header">
+                            <div class="profile-pic"></div>
+                            <div class="post-user-info">
+                                <div class="post-username">filipe.esposito</div>
+                                <div class="post-meta">
+                                    <span>Verificado</span>
+                                    <span class="post-time">47 min</span>
+                                </div>
+                            </div>
+                            <div>⋯</div>
+                        </div>
+                        <div class="post-content">
+                            <p>Oops. 😅 @gentlestreak</p>
+                        </div>
+                        <div class="post-image">
+                            <img src="/api/placeholder/600/400" alt="Screenshot" style="width:100%;">
+                        </div>
+                        <div class="post-actions">
+                            <div class="post-action">❤️</div>
+                            <div class="post-action">💬</div>
+                            <div class="post-action">🔄</div>
+                            <div class="post-action">📤</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </main>
+
+        <!-- Barra lateral direita -->
+        <aside class="sidebar-right">
+            <header class="header">
+                <h2>Meus Posts</h2>
+            </header>
+            
+            <!-- Feed da barra lateral direita -->
+            <div class="feed-container sidebar-feed">
+                <div id="meus-posts">
+                    <!-- Post exemplo para a barra lateral -->
+                    <article class="post sidebar-post">
+                        <div class="post-header">
+                            <div class="profile-pic"></div>
+                            <div class="post-user-info">
+                                <div class="post-username">você</div>
+                                <div class="post-meta">
+                                    <span class="post-time">10 min</span>
+                                </div>
+                            </div>
+                            <div>⋯</div>
+                        </div>
+                        <div class="post-content">
+                            <p>Este é um exemplo do meu post recente. Adicionei alguns detalhes sobre o projeto que estou trabalhando.</p>
+                        </div>
+                        <div class="post-actions">
+                            <div class="post-action">❤️ <span class="action-count">5</span></div>
+                            <div class="post-action">💬 <span class="action-count">2</span></div>
+                        </div>
+                    </article>
+                    
+                    <article class="post sidebar-post">
+                        <div class="post-header">
+                            <div class="profile-pic"></div>
+                            <div class="post-user-info">
+                                <div class="post-username">você</div>
+                                <div class="post-meta">
+                                    <span class="post-time">2 dias</span>
+                                </div>
+                            </div>
+                            <div>⋯</div>
+                        </div>
+                        <div class="post-content">
+                            <p>Comecei a aprender sobre desenvolvimento web backend. Estou muito animado com as possibilidades!</p>
+                        </div>
+                        <div class="post-actions">
+                            <div class="post-action">❤️ <span class="action-count">12</span></div>
+                            <div class="post-action">💬 <span class="action-count">3</span></div>
+                        </div>
+                    </article>
+
+                    <article class="post sidebar-post">
+                        <div class="post-header">
+                            <div class="profile-pic"></div>
+                            <div class="post-user-info">
+                                <div class="post-username">você</div>
+                                <div class="post-meta">
+                                    <span class="post-time">2 dias</span>
+                                </div>
+                            </div>
+                            <div>⋯</div>
+                        </div>
+                        <div class="post-content">
+                            <p>Comecei a aprender sobre desenvolvimento web backend. Estou muito animado com as possibilidades!</p>
+                        </div>
+                        <div class="post-actions">
+                            <div class="post-action">❤️ <span class="action-count">12</span></div>
+                            <div class="post-action">💬 <span class="action-count">3</span></div>
+                        </div>
+                    </article>
+
+                    <article class="post sidebar-post">
+                        <div class="post-header">
+                            <div class="profile-pic"></div>
+                            <div class="post-user-info">
+                                <div class="post-username">você</div>
+                                <div class="post-meta">
+                                    <span class="post-time">2 dias</span>
+                                </div>
+                            </div>
+                            <div>⋯</div>
+                        </div>
+                        <div class="post-content">
+                            <p>Comecei a aprender sobre desenvolvimento web backend. Estou muito animado com as possibilidades!</p>
+                        </div>
+                        <div class="post-actions">
+                            <div class="post-action">❤️ <span class="action-count">12</span></div>
+                            <div class="post-action">💬 <span class="action-count">3</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Botão flutuante para ação rápida -->
+    <div class="floating-button" id="newPostBtn">
+        <span class="icon">+</span>
+    </div>
+
+    <div class="popup-overlay" id="newPostPopup">
+        <div class="popup-container">
+            <div class="popup-header">
+                <h2>Criar nova publicação</h2>
+                <button class="close-popup" id="closePopup">×</button>
+            </div>
+            <div class="popup-content">
+                <textarea id="newPostContent" placeholder="O que você está pensando?" maxlength="280"></textarea>
+            </div>
+            <div class="popup-actions">
+                <button id="submitNewPost">Publicar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Referências para elementos DOM
+            const postForm = document.querySelector('.post-composer');
+            const postInput = document.getElementById('conteudo');
+            const postBtn = document.getElementById('postBtn');
+            const feedContainer = document.getElementById('feed');
+
+            // Referências para o pop-up
+            const newPostBtn = document.getElementById('newPostBtn');
+            const newPostPopup = document.getElementById('newPostPopup');
+            const closePopup = document.getElementById('closePopup');
+            const newPostContent = document.getElementById('newPostContent');
+            const submitNewPost = document.getElementById('submitNewPost');
+
+            // Função para abrir o pop-up
+            function openPopup() {
+                newPostPopup.classList.add('active');
+                newPostContent.focus();
+                // Impedir rolagem do body enquanto o pop-up estiver aberto
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o pop-up
+            function closePopupFunc() {
+                newPostPopup.classList.remove('active');
+                newPostContent.value = '';
+                // Restaurar rolagem do body
+                document.body.style.overflow = '';
+            }
+
+            // Event listeners para o pop-up
+            newPostBtn.addEventListener('click', openPopup);
+            closePopup.addEventListener('click', closePopupFunc);
+
+            // Fechar o pop-up clicando fora dele
+            newPostPopup.addEventListener('click', function (e) {
+                if (e.target === newPostPopup) {
+                    closePopupFunc();
+                }
+            });
+
+            // Publicar post a partir do pop-up
+            submitNewPost.addEventListener('click', function () {
+                const content = newPostContent.value.trim();
+                if (content) {
+                    createPost(content);
+                    closePopupFunc();
+                }
+            });
+
+            // Permitir que ESC feche o pop-up
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && newPostPopup.classList.contains('active')) {
+                    closePopupFunc();
+                }
+            });
+
+            // Função para criar um novo post
+            function createPost(content) {
+                const post = document.createElement('article');
+                post.className = 'post';
+
+                const now = new Date();
+                const timeStr = 'agora';
+
+                post.innerHTML = `
+          <div class="post-header">
+            <div class="profile-pic"></div>
+            <div class="post-user-info">
+              <div class="post-username">você</div>
+              <div class="post-meta">
+                <span class="post-time">${timeStr}</span>
+              </div>
+            </div>
+            <div>⋯</div>
+          </div>
+          <div class="post-content">
+            <p>${content}</p>
+          </div>
+          <div class="post-actions">
+            <div class="post-action">❤️</div>
+            <div class="post-action">💬</div>
+            <div class="post-action">🔄</div>
+            <div class="post-action">📤</div>
+          </div>
+        `;
+
+                // Insere o novo post no topo do feed
+                feedContainer.insertBefore(post, feedContainer.firstChild);
+            }
+
+            // Event listener para o botão de postar original
+            postBtn.addEventListener('click', function () {
+                const content = postInput.value.trim();
+                if (content) {
+                    createPost(content);
+                    postInput.value = '';
+                }
+            });
+
+            // Permite postar com Enter (mas Shift+Enter para nova linha)
+            postInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    postBtn.click();
+                }
+            });
+
+            // Também permitir Enter para o textarea do pop-up
+            newPostContent.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && !e.shiftKey && e.ctrlKey) {
+                    e.preventDefault();
+                    submitNewPost.click();
+                }
+            });
+        });
+    </script>
+    <script src="js/feed.js"></script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+/* Estilo para o feed no estilo Threads */
+:root {
+  --bg: #111;
+  --container-bg: rgba(30, 30, 30, 0.98);
+  --text: #fff;
+  --text-secondary: #bbb;
+  --border: #222;
+  --input-bg: #222;
+  --input-focus-bg: #181818;
+  --button-bg: #fff;
+  --button-text: #111;
+  --button-hover-bg: #eaeaea;
+  --button-hover-text: #000;
+  --post-bg: #181818;
+  --post-hover: #232323;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  --input-radius: 12px;
+  --container-radius: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Layout principal com 3 colunas */
+.app-container {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  height: 90vh;
+  background: var(--container-bg);
+  border-radius: var(--container-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Barra lateral esquerda */
+.sidebar-left {
+  width: 70px;
+  height: 100%;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1.5px solid var(--border);
+  background: transparent;
+  position: relative;
+}
+
+.sidebar-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.sidebar-icon:hover {
+  background: var(--input-bg);
+}
+.sidebar-icon:active {
+    transform: scale(0.92);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    transition: transform 0.08s, box-shadow 0.08s;
+  }
+
+/* Feed central */
+.main-content {
+  flex-grow: 1;
+  max-width: 600px;
+  border-right: 1.5px solid var(--border);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Cabeçalho fixo do feed */
+.header {
+  padding: 20px 24px 16px 24px;
+  border-bottom: 1.5px solid var(--border);
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+/* Área de criar post */
+.post-composer {
+  padding: 20px 24px;
+  display: flex;
+  border-bottom: 1.5px solid var(--border);
+  background: transparent;
+}
+
+.profile-pic {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #444;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.post-input-container {
+  flex-grow: 1;
+  display: flex;
+}
+
+.post-input {
+  background: var(--input-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--input-radius);
+  color: var(--text);
+  flex-grow: 1;
+  font-size: 1rem;
+  padding: 12px 14px;
+  resize: none;
+  outline: none;
+  transition: background 0.2s, border 0.2s;
+  margin-right: 8px;
+}
+.post-input:focus {
+  background: var(--input-focus-bg);
+  border-color: var(--button-hover-bg);
+}
+
+.post-button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: var(--input-radius);
+  padding: 12px 18px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.post-button:hover,
+.post-button:focus {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-text);
+}
+
+/* Feed de posts com rolagem */
+.feed-container {
+  overflow-y: auto;
+  height: 100%;
+  padding: 0 0 12px 0;
+  background: transparent;
+}
+
+.post {
+  background: var(--post-bg);
+  border-radius: var(--input-radius);
+  margin: 18px 24px 0 24px;
+  padding: 18px 20px 14px 20px;
+  border-bottom: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.post:hover {
+  background: var(--post-hover);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post-user-info {
+  margin-left: 14px;
+  flex-grow: 1;
+}
+
+.post-username {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.97rem;
+}
+
+.post-time {
+  margin-left: 8px;
+}
+
+.post-content {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 350px;
+  border-radius: var(--input-radius);
+  margin-bottom: 12px;
+  background-color: #232323;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.post-actions {
+  display: flex;
+  margin-top: 8px;
+}
+
+.post-action {
+  margin-right: 18px;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 8px;
+  transition: background 0.2s;
+}
+.post-action:hover {
+  background: var(--input-bg);
+}
+
+.action-count {
+  margin-left: 8px;
+  font-size: 0.97rem;
+}
+
+/* Barra lateral direita */
+.sidebar-right {
+  width: 320px;
+  padding: 32px 20px;
+  background: transparent;
+  position: relative;
+  height: 100%;
+}
+
+.sidebar-feed {
+  padding: 0;
+  margin-top: 10px;
+}
+
+.sidebar-post {
+  margin: 12px 4px 16px 4px;
+  padding: 16px 16px 12px 16px;
+  font-size: 0.95rem;
+}
+
+.sidebar-post .post-content {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.sidebar-post .post-header {
+  margin-bottom: 8px;
+}
+
+.sidebar-post .profile-pic {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+}
+
+.sidebar-post .post-actions {
+  margin-top: 6px;
+}
+
+.sidebar-post .post-action {
+  margin-right: 14px;
+  font-size: 1rem;
+}
+
+/* Ajusta scrolling para barra lateral */
+.sidebar-right .feed-container {
+  max-height: calc(100% - 65px);
+  padding-right: 5px;
+}
+
+@media (max-width: 1280px) {
+  .sidebar-post {
+    padding: 14px 12px 10px 12px;
+  }
+  
+  .sidebar-post .post-content {
+    font-size: 0.9rem;
+  }
+}
+
+/* Botão flutuante */
+.floating-button {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--button-bg);
+  border: none;
+  color: var(--button-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  z-index: 100;
+  transition: background 0.2s, color 0.2s;
+}
+.floating-button:hover {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-text);
+}
+.floating-button:active {
+  transform: scale(0.92);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+
+/* Responsividade */
+@media (max-width: 1280px) {
+  .app-container {
+    max-width: 1000px;
+  }
+  .sidebar-right {
+    width: 240px;
+    padding: 24px 10px;
+  }
+  .main-content {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .app-container {
+    max-width: 800px;
+  }
+  .sidebar-right {
+    width: 180px;
+    padding: 16px 4px;
+  }
+  .main-content {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar-right {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-container {
+    max-width: 100vw;
+    margin: 20px 0;
+  }
+  .sidebar-right {
+    display: none;
+  }
+  .main-content {
+    max-width: 100%;
+    border-right: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    height: 100vh;
+  }
+
+  .sidebar-left {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    border-right: none;
+    border-bottom: 1.5px solid var(--border);
+    padding: 10px 0;
+  }
+
+  .sidebar-icon {
+    margin-bottom: 0;
+  }
+
+  .main-content {
+    max-width: 100%;
+    border-right: none;
+  }
+
+  .feed-container {
+    height: calc(100vh - 180px);
+  }
+
+  .post {
+    margin: 18px 8px 0 8px;
+  }
+}
