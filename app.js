@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5500', // URL do seu frontend
+  credentials: true
+}));
 app.use(express.json());
 
 // Middleware de logging para debug
@@ -38,6 +41,9 @@ app.use('/auth', authRoutes);
 
 const postRoutes = require('./routes/posts');
 app.use('/api/posts', postRoutes);
+
+const userRoutes = require('./routes/users');
+app.use('/api/users', userRoutes);
 
 // Rota de teste
 app.get('/api/test', (req, res) => {

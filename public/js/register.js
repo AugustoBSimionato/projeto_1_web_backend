@@ -1,14 +1,70 @@
 const apiUrl = 'http://localhost:3000/auth';
 
+// Adicionar função para validação de campos
+function validarCampos() {
+  const nome = document.getElementById('regNome').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const senha = document.getElementById('regSenha').value.trim();
+  const msgElement = document.getElementById('registerMsg');
+  
+  // Resetar mensagem anterior
+  msgElement.textContent = '';
+  
+  // Verificar campos vazios
+  if (!nome) {
+    msgElement.textContent = 'Por favor, informe seu nome de usuário.';
+    msgElement.style.color = 'var(--msg)';
+    document.getElementById('regNome').focus();
+    return false;
+  }
+  
+  if (!email) {
+    msgElement.textContent = 'Por favor, informe seu email.';
+    msgElement.style.color = 'var(--msg)';
+    document.getElementById('regEmail').focus();
+    return false;
+  }
+  
+  // Validação básica de email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    msgElement.textContent = 'Por favor, informe um email válido.';
+    msgElement.style.color = 'var(--msg)';
+    document.getElementById('regEmail').focus();
+    return false;
+  }
+  
+  if (!senha) {
+    msgElement.textContent = 'Por favor, informe uma senha.';
+    msgElement.style.color = 'var(--msg)';
+    document.getElementById('regSenha').focus();
+    return false;
+  }
+  
+  if (senha.length < 6) {
+    msgElement.textContent = 'A senha deve ter pelo menos 6 caracteres.';
+    msgElement.style.color = 'var(--msg)';
+    document.getElementById('regSenha').focus();
+    return false;
+  }
+  
+  return true;
+}
+
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const msgElement = document.getElementById('registerMsg');
   
-  try {
-    const nome = document.getElementById('regNome').value;
-    const email = document.getElementById('regEmail').value;
-    const senha = document.getElementById('regSenha').value;
+  // Validar campos antes de enviar
+  if (!validarCampos()) {
+    return;
+  }
+  
+  const nome = document.getElementById('regNome').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const senha = document.getElementById('regSenha').value.trim();
 
+  try {
     msgElement.textContent = 'Enviando...';
     
     console.log('Enviando para:', `${apiUrl}/register`);
@@ -50,6 +106,19 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
   } catch (error) {
     console.error('Erro:', error);
     msgElement.textContent = error.message || 'Ocorreu um erro ao registrar';
-    msgElement.style.color = 'red';
+    msgElement.style.color = 'var(--msg)';
   }
+});
+
+// Adicionar eventos para limpar mensagens ao digitar
+document.getElementById('regNome').addEventListener('input', () => {
+  document.getElementById('registerMsg').textContent = '';
+});
+
+document.getElementById('regEmail').addEventListener('input', () => {
+  document.getElementById('registerMsg').textContent = '';
+});
+
+document.getElementById('regSenha').addEventListener('input', () => {
+  document.getElementById('registerMsg').textContent = '';
 });

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvy - Perfil</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico">
+    <link rel="stylesheet" href="/public/css/profile.css">
+    <link rel="stylesheet" href="/public/css/popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="app-container">
+        <nav class="sidebar-left">
+            <div class="sidebar-icon" id="nuvy-logo"><img src="/public/images/nuvy.png" alt="nuvy"></div>
+            <div class="sidebar-icon" id="profileIcon"><i class="fa-solid fa-id-badge"></i></div>
+            <div class="sidebar-icon" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></div>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <h2>Meu Perfil</h2>
+            </header>
+            <section class="profile-section" style="padding-top: 32px;">
+                <div id="profileInfo"></div>
+                <div class="profile-desc-container">
+                    <textarea id="profileDesc" maxlength="200" placeholder="Adicione uma breve descrição sobre você"></textarea>
+                    <button id="saveDescBtn">Salvar descrição</button>
+                    <div id="descMsg"></div>
+                </div>
+                <button id="deleteAccountBtn" style="margin-top:20px; background:#d32f2f; color:#fff; border:none; padding:10px 18px; border-radius:8px; cursor:pointer;">Excluir minha conta</button>
+            </section>
+            <div class="popup-overlay" id="deleteAccountPopup">
+                <div class="popup-container">
+                    <div class="popup-header">
+                        <h2>Excluir Conta</h2>
+                        <button class="close-popup" id="closeDeleteAccountPopup">×</button>
+                    </div>
+                    <div class="popup-content">
+                        <p>Digite sua senha para confirmar a exclusão da conta:</p>
+                        <input type="password" id="deleteAccountPassword" placeholder="Senha" style="width:100%; padding:8px; margin-top:10px; border:1px solid #ccc; border-radius:4px;">
+                        <div id="deleteAccountMsg" style="margin-top:10px; min-height:18px;"></div>
+                    </div>
+                    <div class="popup-actions">
+                        <button id="cancelDeleteAccount" style="background:#aaa; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer;">Cancelar</button>
+                        <button id="confirmDeleteAccount" style="background:#d32f2f; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer;">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/profile.js"></script>
+</body>
+</html>

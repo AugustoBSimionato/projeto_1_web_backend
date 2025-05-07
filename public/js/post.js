@@ -15,38 +15,4 @@ async function carregarPost() {
   carregarComentarios();
 }
 
-async function carregarComentarios() {
-  const res = await fetch(`${apiUrl}/comments`, {
-    headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-  });
-  const comentarios = await res.json();
-  const comentariosDiv = document.getElementById('comentarios');
-  comentariosDiv.innerHTML = '';
-  comentarios.forEach(c => {
-    const div = document.createElement('div');
-    div.className = 'comentario';
-    div.innerHTML = `<strong>${c.autor.nome}</strong>: ${c.conteudo}`;
-    comentariosDiv.appendChild(div);
-  });
-}
-
-document.getElementById('commentForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const conteudo = document.getElementById('comentario').value;
-  const res = await fetch(`${apiUrl}/comments`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
-    },
-    body: JSON.stringify({ conteudo })
-  });
-  const data = await res.json();
-  document.getElementById('commentMsg').textContent = data.message || data.error;
-  if (data.message) {
-    document.getElementById('comentario').value = '';
-    carregarComentarios();
-  }
-});
-
 window.onload = carregarPost;

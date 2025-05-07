@@ -1,4 +1,3 @@
-/* Estilo para o feed no estilo Threads */
 :root {
   --bg: #111;
   --container-bg: rgba(30, 30, 30, 0.98);
@@ -35,7 +34,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Layout principal com 3 colunas */
 .app-container {
   display: flex;
   width: 100%;
@@ -49,7 +47,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Barra lateral esquerda */
 .sidebar-left {
   width: 70px;
   height: 100%;
@@ -78,12 +75,17 @@ body {
   background: var(--input-bg);
 }
 .sidebar-icon:active {
-    transform: scale(0.92);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    transition: transform 0.08s, box-shadow 0.08s;
-  }
+  transform: scale(0.92);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: transform 0.08s, box-shadow 0.08s;
+}
 
-/* Feed central */
+#nuvy-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+}
+
 .main-content {
   flex-grow: 1;
   max-width: 600px;
@@ -94,7 +96,6 @@ body {
   min-width: 0;
 }
 
-/* Cabeçalho fixo do feed */
 .header {
   padding: 20px 24px 16px 24px;
   border-bottom: 1.5px solid var(--border);
@@ -111,21 +112,11 @@ body {
   letter-spacing: 1px;
 }
 
-/* Área de criar post */
 .post-composer {
   padding: 20px 24px;
   display: flex;
   border-bottom: 1.5px solid var(--border);
   background: transparent;
-}
-
-.profile-pic {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: #444;
-  margin-right: 16px;
-  flex-shrink: 0;
 }
 
 .post-input-container {
@@ -169,7 +160,6 @@ body {
   color: var(--button-hover-text);
 }
 
-/* Feed de posts com rolagem */
 .feed-container {
   overflow-y: auto;
   height: 100%;
@@ -198,8 +188,10 @@ body {
 }
 
 .post-user-info {
-  margin-left: 14px;
   flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .post-username {
@@ -208,14 +200,24 @@ body {
 }
 
 .post-meta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   color: var(--text-secondary);
   font-size: 0.97rem;
 }
 
-.post-time {
-  margin-left: 8px;
+.delete-post-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.delete-post-btn:hover {
+  color: var(--text);
 }
 
 .post-content {
@@ -237,10 +239,12 @@ body {
 .post-actions {
   display: flex;
   margin-top: 8px;
+  padding-left: 0;
 }
 
 .post-action {
   margin-right: 18px;
+  margin-left: 0;
   display: flex;
   align-items: center;
   color: var(--text);
@@ -248,6 +252,7 @@ body {
   cursor: pointer;
   border-radius: 8px;
   padding: 4px 8px;
+  padding-left: 0;
   transition: background 0.2s;
 }
 .post-action:hover {
@@ -259,13 +264,42 @@ body {
   font-size: 0.97rem;
 }
 
-/* Barra lateral direita */
+.follow-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 4px 10px;
+  border-radius: 16px;
+  transition: background-color 0.2s, color 0.2s;
+  margin-left: auto;
+}
+
+.follow-btn:hover {
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
+.follow-btn:active {
+  transform: scale(0.95);
+}
+
 .sidebar-right {
   width: 320px;
-  padding: 32px 20px;
+  padding: 0 0 32px 0;
   background: transparent;
   position: relative;
   height: 100%;
+}
+
+.sidebar-right .header {
+  padding: 20px 24px 16px 24px;
+}
+
+.sidebar-right .feed-container {
+  max-height: calc(100% - 65px);
+  padding: 0 10px 0 10px;
 }
 
 .sidebar-feed {
@@ -288,22 +322,23 @@ body {
   margin-bottom: 8px;
 }
 
-.sidebar-post .profile-pic {
-  width: 36px;
-  height: 36px;
-  margin-right: 12px;
-}
-
 .sidebar-post .post-actions {
   margin-top: 6px;
+  padding-left: 0;
 }
 
 .sidebar-post .post-action {
   margin-right: 14px;
+  margin-left: 0;
   font-size: 1rem;
+  padding-left: 0;
 }
 
-/* Ajusta scrolling para barra lateral */
+.sidebar-post .follow-btn {
+  font-size: 0.9rem;
+  padding: 3px 8px;
+}
+
 .sidebar-right .feed-container {
   max-height: calc(100% - 65px);
   padding-right: 5px;
@@ -313,13 +348,12 @@ body {
   .sidebar-post {
     padding: 14px 12px 10px 12px;
   }
-  
+
   .sidebar-post .post-content {
     font-size: 0.9rem;
   }
 }
 
-/* Botão flutuante */
 .floating-button {
   position: fixed;
   bottom: 36px;
@@ -349,7 +383,6 @@ body {
   transition: transform 0.08s, box-shadow 0.08s;
 }
 
-/* Responsividade */
 @media (max-width: 1280px) {
   .app-container {
     max-width: 1000px;
