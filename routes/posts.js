@@ -3,8 +3,8 @@ const router = express.Router();
 const Post = require('../models/post');
 const Comment = require('../models/comment');
 const jwt = require('jsonwebtoken');
+const { logError } = require('../utils/logger');
 
-// Middleware de autenticação
 const auth = (req, res, next) => {
   try {
     const token = req.header('Authorization').replace('Bearer ', '');
@@ -16,7 +16,6 @@ const auth = (req, res, next) => {
   }
 };
 
-// Obter todos os posts
 router.get('/', auth, async (req, res) => {
   try {
     const posts = await Post.find()
@@ -24,6 +23,7 @@ router.get('/', auth, async (req, res) => {
       .sort({ dataCriacao: -1 });
     res.json(posts);
   } catch (err) {
+    logError(err);
     res.status(500).json({ error: 'Erro ao buscar posts.' });
   }
 });
@@ -38,6 +38,7 @@ router.post('/', auth, async (req, res) => {
     await post.populate('autor', 'nome email');
     res.status(201).json({ message: 'Post criado com sucesso!', post });
   } catch (err) {
+    logError(err);
     res.status(500).json({ error: 'Erro ao criar post.' });
   }
 });
@@ -52,6 +53,7 @@ router.get('/search', async (req, res) => {
       res.json(posts);
   } catch (err) {
       console.error(err);
+      logError(err);
       res.status(500).json({ error: 'Erro na busca de posts.' });
   }
 });
@@ -67,11 +69,11 @@ router.delete('/:id', auth, async (req, res) => {
     await Post.findByIdAndDelete(req.params.id);
     res.json({ message: 'Post excluído com sucesso!' });
   } catch (err) {
+    logError(err);
     res.status(500).json({ error: 'Erro ao excluir post.' });
   }
 });
 
-// Curtir ou descurtir um post
 router.patch('/:id/like', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -79,16 +81,15 @@ router.patch('/:id/like', auth, async (req, res) => {
     
     const index = post.curtidas.findIndex(id => id.toString() === req.userId);
     if (index === -1) {
-      // Usuário ainda não curtiu, adicionar curtida
       post.curtidas.push(req.userId);
     } else {
-      // Usuário já curtiu, remover curtida
       post.curtidas = post.curtidas.filter(id => id.toString() !== req.userId);
     }
     
     await post.save();
     res.json({ message: 'Ação realizada com sucesso!', curtidas: post.curtidas.length });
   } catch (err) {
+    logError(err);
     res.status(500).json({ error: 'Erro ao processar a ação.' });
   }
 });

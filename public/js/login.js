@@ -5,7 +5,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const email = document.getElementById('loginEmail').value.trim();
   const senha = document.getElementById('loginSenha').value.trim();
 
-  // Validação dos campos obrigatórios
   if (!email || !senha) {
     document.getElementById('loginMsg').style.color = '#d32f2f';
     document.getElementById('loginMsg').textContent = 'Preencha todos os campos obrigatórios.';
@@ -26,7 +25,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     setTimeout(() => window.location.href = 'feed.html', 1500);
   } else {
     document.getElementById('loginMsg').style.color = '#d32f2f';
-    // Mensagem personalizada para usuário/senha inválidos
     if (res.status === 401 || data.error === 'Credenciais inválidas') {
       document.getElementById('loginMsg').textContent = 'E-mail ou senha incorretos.';
     } else {

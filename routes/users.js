@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const { logError } = require('../utils/logger');
 
-// Middleware de autenticação
 const auth = (req, res, next) => {
   try {
     const token = req.header('Authorization').replace('Bearer ', '');
@@ -15,7 +15,6 @@ const auth = (req, res, next) => {
   }
 };
 
-// Follow/Unfollow endpoint
 router.patch('/follow/:id', auth, async (req, res) => {
   try {
     const targetUserId = req.params.id;
@@ -35,14 +34,12 @@ router.patch('/follow/:id', auth, async (req, res) => {
     const isFollowing = currentUser.seguindo.includes(targetUserId);
 
     if (isFollowing) {
-      // Deixar de seguir
       currentUser.seguindo.pull(targetUserId);
       targetUser.seguidores.pull(currentUserId);
       await currentUser.save();
       await targetUser.save();
       return res.json({ message: 'Deixou de seguir o usuário.' });
     } else {
-      // Seguir
       currentUser.seguindo.push(targetUserId);
       targetUser.seguidores.push(currentUserId);
       await currentUser.save();
@@ -51,6 +48,7 @@ router.patch('/follow/:id', auth, async (req, res) => {
     }
   } catch (err) {
     console.error(err);
+    logError(err);
     res.status(500).json({ error: 'Erro ao executar a ação de seguir/desseguir.' });
   }
 });

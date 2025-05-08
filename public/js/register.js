@@ -1,16 +1,12 @@
 const apiUrl = 'http://localhost:3000/auth';
 
-// Adicionar função para validação de campos
 function validarCampos() {
   const nome = document.getElementById('regNome').value.trim();
   const email = document.getElementById('regEmail').value.trim();
   const senha = document.getElementById('regSenha').value.trim();
   const msgElement = document.getElementById('registerMsg');
   
-  // Resetar mensagem anterior
   msgElement.textContent = '';
-  
-  // Verificar campos vazios
   if (!nome) {
     msgElement.textContent = 'Por favor, informe seu nome de usuário.';
     msgElement.style.color = 'var(--msg)';
@@ -25,7 +21,6 @@ function validarCampos() {
     return false;
   }
   
-  // Validação básica de email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     msgElement.textContent = 'Por favor, informe um email válido.';
@@ -55,7 +50,6 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
   e.preventDefault();
   const msgElement = document.getElementById('registerMsg');
   
-  // Validar campos antes de enviar
   if (!validarCampos()) {
     return;
   }
@@ -110,7 +104,6 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
   }
 });
 
-// Adicionar eventos para limpar mensagens ao digitar
 document.getElementById('regNome').addEventListener('input', () => {
   document.getElementById('registerMsg').textContent = '';
 });

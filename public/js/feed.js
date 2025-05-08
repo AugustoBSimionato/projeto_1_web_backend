@@ -54,16 +54,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const usuarioAtual = getUserId();
       const meusPostsArray = posts.filter((post) => {
-          const authorId = typeof post.autor === "object" && post.autor._id 
-              ? post.autor._id.toString() 
-              : post.autor;
-          return authorId === usuarioAtual;
+        const authorId =
+          typeof post.autor === "object" && post.autor._id
+            ? post.autor._id.toString()
+            : post.autor;
+        return authorId === usuarioAtual;
       });
 
       meusPostsContainer.innerHTML = "";
-      
+
       if (meusPostsArray.length === 0) {
-        meusPostsContainer.innerHTML = "<p class='no-posts-message'>Você ainda não possui posts</p>";
+        meusPostsContainer.innerHTML =
+          "<p class='no-posts-message'>Você ainda não possui posts</p>";
       } else {
         meusPostsArray.forEach((post) => {
           const postElement = criarElementoPostLateral(post);
@@ -97,16 +99,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       timeStr = `${dias} dias`;
     }
 
-    const isOwner = post.autor && post.autor._id && post.autor._id.toString() === getUserId();
+    const isOwner =
+      post.autor && post.autor._id && post.autor._id.toString() === getUserId();
 
     let isFollowing = false;
     if (
       !isOwner &&
-      post.autor && 
+      post.autor &&
       post.autor.seguidores &&
       Array.isArray(post.autor.seguidores)
     ) {
-      isFollowing = post.autor.seguidores.map(id => id.toString()).includes(getUserId());
+      isFollowing = post.autor.seguidores
+        .map((id) => id.toString())
+        .includes(getUserId());
     }
 
     let controlHtml = "";
@@ -204,7 +209,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       timeStr = `${dias} dias`;
     }
 
-    const isOwner = post.autor && post.autor._id && post.autor._id.toString() === getUserId();
+    const isOwner =
+      post.autor && post.autor._id && post.autor._id.toString() === getUserId();
     const controlHtml = isOwner
       ? `<button class="delete-post-btn" data-id="${post._id}"><i class="fa-solid fa-trash"></i></button>`
       : ``;
@@ -238,7 +244,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return postElement;
   }
 
-  // Função para curtir/descurtir um post
   async function curtirPost(postId) {
     try {
       const res = await fetch(`${apiUrl}/${postId}/like`, {
@@ -250,7 +255,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw new Error("Erro ao curtir post");
       }
 
-      // Recarregar os posts após curtir
       await carregarPosts();
     } catch (error) {
       console.error("Erro ao curtir post:", error);

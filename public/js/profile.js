@@ -143,13 +143,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // Elementos para exclusão de conta
   const deleteAccountBtn = document.getElementById("deleteAccountBtn");
   const deleteAccountPopup = document.getElementById("deleteAccountPopup");
-  const closeDeleteAccountPopup = document.getElementById("closeDeleteAccountPopup");
+  const closeDeleteAccountPopup = document.getElementById(
+    "closeDeleteAccountPopup"
+  );
   const cancelDeleteAccount = document.getElementById("cancelDeleteAccount");
   const confirmDeleteAccount = document.getElementById("confirmDeleteAccount");
-  const deleteAccountPassword = document.getElementById("deleteAccountPassword");
+  const deleteAccountPassword = document.getElementById(
+    "deleteAccountPassword"
+  );
   const deleteAccountMsg = document.getElementById("deleteAccountMsg");
 
   deleteAccountBtn.addEventListener("click", () => {

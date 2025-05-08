@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const { logError } = require('../utils/logger');
 
 router.get('/test', (req, res) => {
   res.json({ message: 'Rota de autenticação funcionando!' });
@@ -37,6 +38,7 @@ router.post('/register', async (req, res) => {
     res.status(201).json({ message: 'Usuário registrado com sucesso!' });
   } catch (err) {
     console.error('Erro no registro:', err);
+    logError(err);
     res.status(500).json({ error: 'Erro ao registrar usuário.' });
   }
 });
@@ -72,6 +74,7 @@ router.post('/login', async (req, res) => {
     });
   } catch (err) {
     console.error('Erro no login:', err);
+    logError(err);
     res.status(500).json({ error: 'Erro ao fazer login.' });
   }
 });
@@ -102,6 +105,7 @@ router.get('/profile', async (req, res) => {
     });
   } catch (error) {
     console.error('Erro ao buscar perfil:', error);
+    logError(error);
     res.status(500).json({ error: 'Erro ao buscar perfil.' });
   }
 });
@@ -124,6 +128,8 @@ router.patch('/profile/descricao', async (req, res) => {
     ).select('-senha');
     res.json({ descricao: user.descricao });
   } catch (error) {
+    console.error(error);
+    logError(error);
     res.status(500).json({ error: 'Erro ao atualizar descrição.' });
   }
 });
@@ -152,10 +158,10 @@ router.delete('/profile', async (req, res) => {
     }
 
     await User.findByIdAndDelete(userId);
-    // Opcional: remover posts e comentários relacionados ao usuário.
     res.json({ message: "Conta excluída com sucesso." });
   } catch (error) {
     console.error("Erro ao excluir conta:", error);
+    logError(error);
     res.status(500).json({ error: "Erro ao excluir a conta." });
   }
 });
