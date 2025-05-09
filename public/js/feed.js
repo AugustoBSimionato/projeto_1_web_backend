@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     postElement.innerHTML = `
-      <div class="post-header">
-        <div class="profile-pic"></div>
+    <div class="post-header">
+      <div class="profile-pic"></div>
         <div class="post-user-info">
           <div class="post-username">${post.autor.nome}</div>
           <div class="post-meta">
@@ -144,6 +144,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           } 
           <span class="action-count">${post.curtidas.length}</span>
         </div>
+        <div class="post-action comment-btn" data-id="${post._id}" title="Comentar">
+          <i class="fa-solid fa-comment"></i>
+        </div>
       </div>
     `;
 
@@ -151,6 +154,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (likeButton) {
       likeButton.addEventListener("click", async () => {
         await curtirPost(post._id);
+      });
+    }
+
+    const commentBtn = postElement.querySelector(".comment-btn");
+    if (commentBtn) {
+      commentBtn.addEventListener("click", () => {
+        window.location.href = `postComments.html?id=${post._id}`;
       });
     }
 

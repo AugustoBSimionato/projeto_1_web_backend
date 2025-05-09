@@ -38,6 +38,9 @@ app.use("/api/posts", postRoutes);
 const userRoutes = require("./routes/users");
 app.use("/api/users", userRoutes);
 
+const commentRoutes = require('./routes/comments');
+app.use('/api/comments', commentRoutes);
+
 app.get("/api/test", (req, res) => {
   res.json({ message: "API funcionando!" });
 });

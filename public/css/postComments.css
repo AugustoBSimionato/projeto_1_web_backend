@@ -1,0 +1,327 @@
+:root {
+  --bg: #111;
+  --container-bg: rgba(30, 30, 30, 0.98);
+  --text: #fff;
+  --input-bg: #222;
+  --input-focus-bg: #181818;
+  --button-bg: #fff;
+  --button-text: #111;
+  --button-hover-bg: #eaeaea;
+  --button-hover-text: #000;
+  --divider-color: #ccc;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  --input-radius: 12px;
+  --container-radius: 24px;
+  --input-border: #333;
+  --link-hover-bg: #222;
+  --text-secondary: #bbb;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: var(--container-bg);
+  border-radius: var(--container-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.sidebar-left {
+  padding: 16px;
+  background: transparent;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.post-details {
+  padding: 16px;
+  background: var(--input-bg);
+  border-radius: var(--input-radius);
+  margin: 0 16px 16px 16px;
+}
+
+.post-details .post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.post-details .post-username {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.post-details .post-meta {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.divider {
+  border: none;
+  border-bottom: 1px solid var(--divider-color);
+  margin: 0 16px 16px;
+}
+
+.comment-composer {
+  display: flex;
+  margin: 0 16px 16px;
+}
+
+.comment-composer textarea {
+  flex-grow: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--divider-color);
+  border-radius: var(--input-radius);
+  color: var(--text);
+  padding: 8px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.comment-composer textarea:focus {
+  background: var(--input-focus-bg);
+  outline: none;
+}
+
+.comment-composer textarea#commentInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: 'Inter', Arial, sans-serif;
+  transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+  outline: none;
+  box-shadow: 0 0 0 0 transparent;
+  margin: 0;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.comment-composer textarea#commentInput:focus {
+  background: var(--input-focus-bg);
+  box-shadow: 0 0 0 2px var(--link-hover-bg);
+  border-color: var(--link-hover-bg);
+}
+
+.comment-composer button {
+  margin-left: 8px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: var(--input-radius);
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.comment-composer button:hover {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-text);
+}
+
+.comment-composer button#postCommentBtn {
+  padding: 12px;
+  background: var(--button-bg, #fff);
+  color: var(--button-text, #111);
+  border: none;
+  border-radius: var(--input-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.comment-composer button#postCommentBtn:hover,
+.comment-composer button#postCommentBtn:focus {
+  background: var(--button-hover-bg, #eaeaea);
+  color: var(--button-hover-text, #000);
+}
+
+.comments-container {
+  margin: 0 16px 16px;
+}
+
+.comment-item {
+  padding: 12px;
+  background: var(--input-bg);
+  border-radius: var(--input-radius);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.comment-item .comment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  padding-right: 2rem;
+}
+
+.comment-item .comment-username {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.comment-item .comment-meta {
+  margin-left: 8px;
+  font-size: 0.85rem;
+  color: #bbb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.comment-item p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.comment-item .delete-comment-btn {
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.comment-item .delete-comment-btn:hover {
+  color: var(--text);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-container {
+  width: 450px;
+  background: var(--container-bg);
+  color: var(--text);
+  padding: 30px 20px;
+  border-radius: var(--input-radius);
+  box-shadow: var(--shadow);
+  transform: translateY(20px);
+  transition: transform 0.3s, background 0.3s, color 0.3s;
+  font-family: "Inter", Arial, sans-serif;
+  position: relative;
+}
+
+.popup-overlay.active .popup-container {
+  transform: translateY(0);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popup-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-popup {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary, #bbb);
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.close-popup:hover {
+  background: var(--input-bg);
+}
+
+.popup-content p {
+  margin: 0;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.popup-actions button {
+  padding: 12px 18px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: var(--input-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.popup-actions button:hover {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-text);
+  opacity: 1;
+}
+
+#deleteCommentPopup .popup-actions #confirmDeleteComment {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+#deleteCommentPopup .popup-actions #confirmDeleteComment:hover {
+  background-color: #b71c1c;
+}

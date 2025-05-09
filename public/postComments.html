@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvy - Comentários</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico">
+    <link rel="stylesheet" href="/public/css/postComments.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar-left">
+            <button id="backBtn" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+        </nav>
+        <main class="main-content">
+            <section id="postDetails" class="post-details"></section>
+            <section class="comment-composer">
+                <textarea id="commentInput" placeholder="Adicionar um comentário" maxlength="280"></textarea>
+                <button id="postCommentBtn">Postar</button>
+            </section>
+            <section id="commentsContainer" class="comments-container"></section>
+        </main>
+    </div>
+
+    <div class="popup-overlay" id="deleteCommentPopup">
+        <div class="popup-container">
+            <div class="popup-header">
+                <h2>Excluir Comentário</h2>
+                <button class="close-popup" id="closeDeleteCommentPopup">x</button>
+            </div>
+            <div class="popup-content">
+                <p>Tem certeza que deseja excluir este comentário?</p>
+            </div>
+            <div class="popup-actions">
+                <button id="cancelDeleteComment">Cancelar</button>
+                <button id="confirmDeleteComment">Excluir</button>
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/postComments.js"></script>
+</body>
+</html>
